@@ -1,27 +1,50 @@
 import questions from './data.js'
 
-const mainDiv = document.querySelector("#main")
+let score = 0;
+let QuestionNumber = 0;
 
+function loadQuiz() {
 
-// function print_questions_number(){
-//     for(let i in questions){
-//         const my_p = document.createElement("p")
-//         my_p.innerText = `Klausimas ${questions[i].id} iš ${questions.length}`
-//         mainDiv.appendChild(my_p)
-//     }    
-// }
+    const CurrentQuestion = questions[QuestionNumber]
 
-// print_questions_number()
+    const quizQuestionElement = document.getElementById("question-txt");
+    const quizAnswersElement = document.getElementById("quiz-answers");
+    const QuestionNum = document.getElementById("question-numb")
 
+    quizQuestionElement.innerHTML = CurrentQuestion.question;
+    quizQuestionElement.classList.add("fw-bold");
 
+    quizAnswersElement.innerHTML = "";
 
+        for(const answer of CurrentQuestion.answers){
+            QuestionNum.innerHTML = `Klausimas ${QuestionNumber+1} iš ${questions.length}`
+            const button = document.createElement("button");
+            const lineBreak = document.createElement('br');
+            
+            button.classList.add("btn", "btn-success", "mb-1");
+            button.innerText = answer.text;
 
-// questions.forEach(i => {
-//     for(let j=0;j<i.answers.length;j++){
-//         const my_answers = document.createElement("button")
-//         my_answers.innerText = i.answers[j].text
-//         mainDiv.appendChild(my_answers)
-//     }        
-// })
+            button.addEventListener("click", () => {
+                if(answer.isCorrect === true){
+                    score += 1;
+                }
+
+                QuestionNumber += 1;
+
+                if(QuestionNumber == questions.length){
+                    alert(`Jusu Taškai: ${score}`);
+                    QuestionNumber = -1;
+                    score = 0;
+                } else{
+                    loadQuiz();
+                }
+            })
+        quizAnswersElement.appendChild(button);
+        quizAnswersElement.appendChild(lineBreak);
+    }
+    
+  }    
+
+loadQuiz()
 
 // console.log(questions)
