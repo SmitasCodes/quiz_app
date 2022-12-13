@@ -29,12 +29,12 @@ function loadQuiz(replay) {
 
     const quizQuestionElement = document.getElementById("question-txt");
     const quizAnswersElement = document.getElementById("quiz-answers");
-    const QuestionNum = document.getElementById("question-numb")
-    const scoreNumb = document.querySelector("#score-numb")
+    const QuestionNum = document.getElementById("question-numb");
+    const scoreNumb = document.querySelector("#score-numb");
 
     scoreNumb.innerText = `Taškai: ${score}`
     quizQuestionElement.innerHTML = CurrentQuestion.question;
-    quizQuestionElement.classList.add("fw-bold");
+    quizQuestionElement.classList.add("fw-bold", "mb-4");
     quizAnswersElement.innerHTML = "";
 
     for (const answer of CurrentQuestion.answers) {
@@ -42,7 +42,7 @@ function loadQuiz(replay) {
         const button = document.createElement("button");
         const lineBreak = document.createElement('br');
 
-        button.classList.add("btn", "btn-success", "mb-2", "w-100", "text-left");
+        button.classList.add("btn", "btn-success", "mb-2", "w-100");
         button.innerText = answer.text;
 
         button.addEventListener("click", () => {
@@ -110,22 +110,24 @@ function displayEndScore(score) {
             break
     }
 
-    const question = document.getElementById('question')
-    question.style.display = "none"
+    const question = document.getElementById('question');
+    question.style.display = "none";
 
-    const pagr = document.getElementById('content_div')
-    const quizEnd = document.createElement('div')
-    quizEnd.id = 'quizEnd'
-    pagr.appendChild(quizEnd)
+    const pagr = document.getElementById('content_div');
+    const quizEnd = document.createElement('div');
+    quizEnd.id = 'quizEnd';
+    pagr.appendChild(quizEnd);
 
 
-    const scoreResult = document.createElement('h2')
-    const seperatorHR = document.createElement('hr')
-    const TryAgianButton = document.createElement('button')
+    const scoreResult = document.createElement('h2');
+    const seperatorHR = document.createElement('hr');
+    const TryAgianButton = document.createElement('button');
+    
+    seperatorHR.classlist.add("pt-2", "pb-2");
 
-    scoreResult.innerText = `Rezultatas ${output} surinkai tašku: ${score}/20`
-    quizEnd.appendChild(scoreResult)
-    quizEnd.appenChild(seperatorHR)
+    scoreResult.innerText = `Rezultatas ${output} surinkai tašku: ${score}/20`;
+    quizEnd.appendChild(scoreResult);
+    quizEnd.appenChild(seperatorHR);
 
 
     TryAgianButton.classList.add("btn", "btn-success", "mb-1");
