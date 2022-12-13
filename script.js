@@ -34,7 +34,7 @@ function loadQuiz(replay) {
 
     scoreNumb.innerText = `Taškai: ${score}`
     quizQuestionElement.innerHTML = CurrentQuestion.question;
-    quizQuestionElement.classList.add("fw-bold", "pb-2");
+    quizQuestionElement.classList.add("fw-bold", "pb-3");
     quizAnswersElement.innerHTML = "";
 
     for (const answer of CurrentQuestion.answers) {
@@ -117,6 +117,8 @@ function displayEndScore(score) {
     const quizEnd = document.createElement('div')
     quizEnd.id = 'quizEnd'
     pagr.appendChild(quizEnd)
+    
+    quizEnd.classList.add("p-5")
 
 
     const scoreResult = document.createElement('h2')
@@ -127,7 +129,7 @@ function displayEndScore(score) {
     quizEnd.appendChild(scoreResult)
     quizEnd.appenChild(seperatorHR)
 
-    TryAgianButton.classList.add("btn", "btn-success", "mb-1");
+    TryAgianButton.classList.add("btn", "btn-success");
     TryAgianButton.innerText = 'Bandyti dar karta'
 
     quizEnd.appendChild(TryAgianButton)
