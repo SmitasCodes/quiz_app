@@ -2,6 +2,7 @@ import questions from './data.js'
 
 let score = 0;
 let QuestionNumber = 0;
+let bubblesExist = false;
 
 const startBtn = document.querySelector("#start-btn");
 const welcomeText = document.querySelector("#welcome-text")
@@ -13,9 +14,8 @@ startBtn.addEventListener("click",()=>{
     loadQuiz();
 })
 
-
 function loadQuiz() {
-
+    bubbles();
     const CurrentQuestion = questions[QuestionNumber]
 
     const quizQuestionElement = document.getElementById("question-txt");
@@ -37,11 +37,12 @@ function loadQuiz() {
         button.innerText = answer.text;
 
         button.addEventListener("click", () => {
+            bubbles(answer.isCorrect,QuestionNumber);
+            QuestionNumber += 1;
+            
             if (answer.isCorrect === true) {
                 score += 1;
-            }  
-
-            QuestionNumber += 1;
+            } 
 
             if (QuestionNumber == questions.length) {
                 displayEndScore(score)
@@ -55,6 +56,26 @@ function loadQuiz() {
         quizAnswersElement.appendChild(lineBreak);
     }
 
+}
+
+function bubbles(answer,number){
+    const contentDiv = document.querySelector("#content_div");
+    if(bubblesExist!=true){
+        const ul = document.createElement("ul");
+        for(let i = 0; i<20;i++){
+            let li = document.createElement("li");
+            ul.appendChild(li)
+        }
+        contentDiv.appendChild(ul); 
+        bubblesExist = true;
+    } else{
+        let liList = document.querySelectorAll("li")
+        if(answer){
+            liList[number].style.cssText ="background:#50C878;";
+        } else {
+            liList[number].style.cssText ="background:#C70039;";
+        }
+    }
 }
 
 function displayEndScore(score) {
@@ -81,7 +102,7 @@ function displayEndScore(score) {
     const question = document.getElementById('question')
     question.style.display = "none"
     
-    const pagr = document.getElementById('pagr')
+    const pagr = document.getElementById('content_div')
     const quizEnd = document.createElement('div')
     quizEnd.id = 'quizEnd'
     pagr.appendChild(quizEnd)
@@ -98,7 +119,6 @@ function displayEndScore(score) {
     TryAgianButton.innerText = 'Bandyti dar karta'
 
     quizEnd.appendChild(TryAgianButton)
-
     TryAgianButton.addEventListener('click', () => {
         quizEnd.remove()
         question.style.display = "block"
