@@ -12,10 +12,10 @@ startBtn.addEventListener("click",()=>{
     welcomeText.style.cssText = "display:none;"
     startBtn.style.cssText = "display:none;"
     loadQuiz();
+    bubbles();
 })
 
 function loadQuiz() {
-    bubbles();
     const CurrentQuestion = questions[QuestionNumber]
 
     const quizQuestionElement = document.getElementById("question-txt");
@@ -39,7 +39,7 @@ function loadQuiz() {
         button.addEventListener("click", () => {
             bubbles(answer.isCorrect,QuestionNumber);
             QuestionNumber += 1;
-            
+
             if (answer.isCorrect === true) {
                 score += 1;
             } 
