@@ -125,6 +125,7 @@ function displayEndScore(score) {
 
     scoreResult.innerText = `Rezultatas ${output} surinkai tašku: ${score}/20`
     quizEnd.appendChild(scoreResult)
+    quizEnd.appenChild(seperatorHR)
 
 
     TryAgianButton.classList.add("btn", "btn-success", "mb-1");
