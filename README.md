@@ -1,5 +1,4 @@
 # quiz_app
 Quiz
 
-
-Pvz txt failas turi Pradini langą ir klausimų html formą
+Script.js turi visa koda, o folderyje "Užbaigtos atskirti JS moduliai" yra mano trys funkcijas atskirtas į savo skirtingus failus
