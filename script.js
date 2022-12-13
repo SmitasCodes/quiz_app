@@ -67,18 +67,20 @@ function loadQuiz(replay) {
 function bubbles(answer, number) {
     let liList = document.querySelectorAll("li");
     const contentDiv = document.querySelector("#content_div");
-
     if (answer === "clear"&& document.querySelector("ul") != null) {
         liList.forEach(bubble => {
             bubble.style.cssText = "";
         })
     } else if (bubblesExist != true) {
-        const ul_lists = document.createElement("ul");
+        const ul_wrapper = document.createElement("div");
+        // ul_wrapper.id = "ul_wrapper";
+        const ul = document.createElement("ul");
         for (let i = 0; i < 20; i++) {
             let li = document.createElement("li");
-            ul_lists.appendChild(li)
+            ul.appendChild(li)
         }
-        contentDiv.appendChild(ul_lists);
+        // ul_wrapper.appendChild(ul);
+        contentDiv.appendChild(ul);
         bubblesExist = true;
     } else {
         if (answer) {
