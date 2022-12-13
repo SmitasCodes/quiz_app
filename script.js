@@ -7,13 +7,12 @@ let bubblesExist = false;
 const startBtn = document.querySelector("#start-btn");
 const welcomeText = document.querySelector("#welcome-text")
 
+
 startBtn.addEventListener("click",()=>{
     welcomeText.style.cssText = "display:none;"
     startBtn.style.cssText = "display:none;"
     loadQuiz();
 })
-
-
 
 function loadQuiz() {
     bubbles();
@@ -46,7 +45,7 @@ function loadQuiz() {
             } 
 
             if (QuestionNumber == questions.length) {
-                alert(`Jusu Taškai: ${score}`);
+                displayEndScore(score)
                 QuestionNumber = -1;
                 score = 0;
             } else {
@@ -79,37 +78,50 @@ function bubbles(answer,number){
     }
 }
 
-// function displayEndScore(score) {
-//     let output = 'Invalid score'
+function displayEndScore(score) {
+    let output = 'Invalid score'
     
-//     switch (true) {
-//         case score <= 5:
-//             output = 'Very bad'
-//             break
-//         case score <= 9:
-//             output = 'Bad'
-//             break
-//         case score <= 15:
-//             output = 'Pretty good'
-//             break
-//         case score <= 19:
-//             output = 'Good'
-//             break
-//         case score >= 20:
-//             output = 'Perfect'
-//             break
-//     }
+    switch (true) {
+        case score <= 5:
+            output = 'labai blogas'
+            break
+        case score <= 9:
+            output = 'blogas'
+            break
+        case score <= 15:
+            output = 'visai Geras'
+            break
+        case score <= 19:
+            output = 'geras'
+            break
+        case score >= 20:
+            output = 'labai geras'
+            break
+    }
 
-//     console.log(output)
+    const question = document.getElementById('question')
+    question.style.display = "none"
     
-    //To do: display as div
-// }
+    const pagr = document.getElementById('content_div')
+    const quizEnd = document.createElement('div')
+    quizEnd.id = 'quizEnd'
+    pagr.appendChild(quizEnd)
 
-// console.log(output)
+    
+    const scoreResult = document.createElement('h2')
+    const TryAgianButton = document.createElement('button')
 
+    scoreResult.innerText = `Rezultatas ${output} surinkai tasku: ${score}/20`
+    quizEnd.appendChild(scoreResult)
 
+    
+    TryAgianButton.classList.add("btn", "btn-success", "mb-1");
+    TryAgianButton.innerText = 'Bandyti dar karta'
 
-// ul.setAttribute("id","bubble_list");
-    // const li_elements = ["li1","li2","li3","li4","li5","li6","li7","li8","li9","li10","li11","li12","li13","li14","li15","li16","li17","li18","li19","li20"]
-    // for(let element in li_elements){
-    // }
+    quizEnd.appendChild(TryAgianButton)
+    TryAgianButton.addEventListener('click', () => {
+        quizEnd.remove()
+        question.style.display = "block"
+        document.location.reload();
+    })
+}
