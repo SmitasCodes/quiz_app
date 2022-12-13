@@ -34,7 +34,7 @@ function loadQuiz(replay) {
 
     scoreNumb.innerText = `Taškai: ${score}`
     quizQuestionElement.innerHTML = CurrentQuestion.question;
-    quizQuestionElement.classList.add("fw-bold");
+    quizQuestionElement.classList.add("fw-bold", "mb-3");
     quizAnswersElement.innerHTML = "";
 
     for (const answer of CurrentQuestion.answers) {
@@ -42,7 +42,7 @@ function loadQuiz(replay) {
         const button = document.createElement("button");
         const lineBreak = document.createElement('br');
 
-        button.classList.add("btn", "btn-success", "mb-2", "w-100", "text-left");
+        button.classList.add("btn", "btn-success", "mb-2", "w-100");
         button.innerText = answer.text;
 
         button.addEventListener("click", () => {
@@ -126,9 +126,10 @@ function displayEndScore(score) {
     scoreResult.innerText = `Rezultatas ${output} surinkai tašku: ${score}/20`
     quizEnd.appendChild(scoreResult)
     quizEnd.appenChild(seperatorHR)
+    
+    scoreResult.classList.add("pb-2");
 
-
-    TryAgianButton.classList.add("btn", "btn-success", "mb-1");
+    TryAgianButton.classList.add("btn", "btn-success", "pt-2", "mb-1");
     TryAgianButton.innerText = 'Bandyti dar karta'
 
     quizEnd.appendChild(TryAgianButton)
