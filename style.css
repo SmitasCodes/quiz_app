@@ -3,3 +3,31 @@
     box-sizing: border-box;
     padding: 0;
 }
+
+
+/* Bubbles styling */
+#content_div{
+    position: relative;
+}
+  
+ul{
+    list-style-type: none;
+    /* background: black; */
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    width: 100%;
+    max-width: 600px;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+}
+  
+li{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    display: inline-block;
+    background-color: rgb(209, 209, 209);
+    border: 1px solid black;
+    border-radius: 50%;
+}

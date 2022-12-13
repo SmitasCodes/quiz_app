@@ -2,6 +2,7 @@ import questions from './data.js'
 
 let score = 0;
 let QuestionNumber = 0;
+let bubblesExist = false;
 
 const startBtn = document.querySelector("#start-btn");
 const welcomeText = document.querySelector("#welcome-text")
@@ -10,11 +11,12 @@ startBtn.addEventListener("click",()=>{
     welcomeText.style.cssText = "display:none;"
     startBtn.style.cssText = "display:none;"
     loadQuiz();
-    
 })
 
-function loadQuiz() {
 
+
+function loadQuiz() {
+    bubbles();
     const CurrentQuestion = questions[QuestionNumber]
 
     const quizQuestionElement = document.getElementById("question-txt");
@@ -36,11 +38,12 @@ function loadQuiz() {
         button.innerText = answer.text;
 
         button.addEventListener("click", () => {
+            bubbles(answer.isCorrect,QuestionNumber);
+            QuestionNumber += 1;
+            
             if (answer.isCorrect === true) {
                 score += 1;
-            }  
-
-            QuestionNumber += 1;
+            } 
 
             if (QuestionNumber == questions.length) {
                 alert(`Jusu Taškai: ${score}`);
@@ -54,6 +57,26 @@ function loadQuiz() {
         quizAnswersElement.appendChild(lineBreak);
     }
 
+}
+
+function bubbles(answer,number){
+    const contentDiv = document.querySelector("#content_div");
+    if(bubblesExist!=true){
+        const ul = document.createElement("ul");
+        for(let i = 0; i<20;i++){
+            let li = document.createElement("li");
+            ul.appendChild(li)
+        }
+        contentDiv.appendChild(ul); 
+        bubblesExist = true;
+    } else{
+        let liList = document.querySelectorAll("li")
+        if(answer){
+            liList[number].style.cssText ="background:#50C878;";
+        } else {
+            liList[number].style.cssText ="background:#C70039;";
+        }
+    }
 }
 
 // function displayEndScore(score) {
@@ -83,3 +106,10 @@ function loadQuiz() {
 // }
 
 // console.log(output)
+
+
+
+// ul.setAttribute("id","bubble_list");
+    // const li_elements = ["li1","li2","li3","li4","li5","li6","li7","li8","li9","li10","li11","li12","li13","li14","li15","li16","li17","li18","li19","li20"]
+    // for(let element in li_elements){
+    // }
