@@ -19,14 +19,12 @@ function play() {
     bubbles("clear");
 }
 
-// setInterval(()=>{console.log(score)},3000)
 
 function loadQuiz(replay) {
     if(replay == true){
         QuestionNumber = 0;
         score = 0;
     }
-
     const CurrentQuestion = questions[QuestionNumber]
 
     const quizQuestionElement = document.getElementById("question-txt");
@@ -44,12 +42,13 @@ function loadQuiz(replay) {
         const button = document.createElement("button");
         const lineBreak = document.createElement('br');
 
-        button.classList.add("btn", "btn-success", "mb-1");
+        button.classList.add("btn", "btn-success", "mb-2", "w-100", "text-left");
         button.innerText = answer.text;
 
         button.addEventListener("click", () => {
             bubbles(answer.isCorrect, QuestionNumber);
             QuestionNumber += 1;
+            
             if (answer.isCorrect === true) {
                 score += 1;
             }
@@ -121,6 +120,7 @@ function displayEndScore(score) {
 
 
     const scoreResult = document.createElement('h2')
+    const seperatorHR = document.createElement('hr')
     const TryAgianButton = document.createElement('button')
 
     scoreResult.innerText = `Rezultatas ${output} surinkai tašku: ${score}/20`
