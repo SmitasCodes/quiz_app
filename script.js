@@ -34,7 +34,7 @@ function loadQuiz(replay) {
 
     scoreNumb.innerText = `Taškai: ${score}`
     quizQuestionElement.innerHTML = CurrentQuestion.question;
-    quizQuestionElement.classList.add("fw-bold", "mb-3");
+    quizQuestionElement.classList.add("fw-bold", "mb-4");
     quizAnswersElement.innerHTML = "";
 
     for (const answer of CurrentQuestion.answers) {
@@ -126,8 +126,6 @@ function displayEndScore(score) {
     scoreResult.innerText = `Rezultatas ${output} surinkai tašku: ${score}/20`
     quizEnd.appendChild(scoreResult)
     quizEnd.appenChild(seperatorHR)
-    
-    scoreResult.classList.add("pb-2");
 
     TryAgianButton.classList.add("btn", "btn-success", "pt-2", "mb-1");
     TryAgianButton.innerText = 'Bandyti dar karta'
