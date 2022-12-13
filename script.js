@@ -42,7 +42,7 @@ function loadQuiz(replay) {
         const button = document.createElement("button");
         const lineBreak = document.createElement('br');
 
-        button.classList.add("btn", "btn-success", "mb-2", "w-100", "text-left");
+        button.classList.add("btn", "btn-success", "mb-2", "w-100");
         button.innerText = answer.text;
 
         button.addEventListener("click", () => {
@@ -120,13 +120,10 @@ function displayEndScore(score) {
 
 
     const scoreResult = document.createElement('h2')
-    const seperatorHR = document.createElement('hr')
     const TryAgianButton = document.createElement('button')
 
     scoreResult.innerText = `Rezultatas ${output} surinkai tašku: ${score}/20`
     quizEnd.appendChild(scoreResult)
-    quizEnd.appenChild(seperatorHR)
-
 
     TryAgianButton.classList.add("btn", "btn-success", "mb-1");
     TryAgianButton.innerText = 'Bandyti dar karta'
