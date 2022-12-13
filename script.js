@@ -3,6 +3,7 @@ import questions from './data.js'
 let score = 0;
 let QuestionNumber = 0;
 
+
 function loadQuiz() {
 
     const CurrentQuestion = questions[QuestionNumber]
@@ -10,7 +11,8 @@ function loadQuiz() {
     const quizQuestionElement = document.getElementById("question-txt");
     const quizAnswersElement = document.getElementById("quiz-answers");
     const QuestionNum = document.getElementById("question-numb")
-
+    const scoreNumb = document.querySelector("#score-numb")
+    scoreNumb.innerText = `Score: ${score}`
     quizQuestionElement.innerHTML = CurrentQuestion.question;
     quizQuestionElement.classList.add("fw-bold");
 
@@ -46,5 +48,3 @@ function loadQuiz() {
   }    
 
 loadQuiz()
-
-// console.log(questions)
