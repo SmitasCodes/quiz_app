@@ -66,7 +66,7 @@ function loadQuiz(replay) {
 
 function bubbles(answer, number) {
     let liList = document.querySelectorAll("li");
-    const contentDiv = document.querySelector("#content_div");
+    const contentDiv = document.querySelector("#bubbles");
     if (answer === "clear"&& document.querySelector("ul") != null) {
         liList.forEach(bubble => {
             bubble.style.cssText = "";
